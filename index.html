@@ -1,304 +1,171 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Jilfoyle</title><meta name="author" content="Jilfoyle"><meta name="copyright" content="Jilfoyle"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Jilfoyle">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="zh_TW">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="Jilfoyle">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img2.baidu.com/it/u=343850545,2320437498&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+<meta property="article:author" content="Jilfoyle">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://img2.baidu.com/it/u=343850545,2320437498&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Jilfoyle',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-07-19 21:34:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-myfirst" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/07/19/myfirst/" class="article-date">
-  <time datetime="2022-07-19T03:08:06.000Z" itemprop="datePublished">2022-07-19</time>
-</a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/19/myfirst/">myfirst</a>
-    </h1>
-  
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Jilfoyle</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/19/myfirst/" title="myfirst"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="myfirst"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/19/myfirst/" title="myfirst">myfirst</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-19T03:08:06.000Z" title="发表于 2022-07-19 11:08:06">2022-07-19</time></span></div><div class="content">- SPA单页 Web 应用概述：SPA（single page web application）单页 Web 应用，Web 不再是一张张页面，而是一个整体的应用，一个由路由系统、数据系          统、页面（组件）系统等等，组成的应用程序，我们之前学习的Vue就是SPA中的佼佼者，SPA 应用广泛用于对SEO要求不高的场景中。
+   
+- SEO搜索引擎优化概述：SEO：搜索引擎优化（Search Engine Optimization）, 通过各种技术（手段）来确保，我们的Web内容被搜索引擎最大化收录，最大化提高权重，最终带来更多流量。
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="SPA单页-Web-应用"><a href="#SPA单页-Web-应用" class="headerlink" title="- SPA单页 Web 应用"></a>- SPA单页 Web 应用</h4><p>概述：SPA（single page web application）单页 Web 应用，Web 不再是一张张页面，而是一个整体的应用，一个由路由系统、数据系          统、页面（组件）系统等等，组成的应用程序，我们之前学习的Vue就是SPA中的佼佼者，SPA 应用广泛用于对SEO要求不高的场景中。</p>
-<p>   <img src="https://img-blog.csdnimg.cn/63c19d4fd03f4892bed9a5c027bed40f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATV93eno=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<h4 id="SEO搜索引擎优化"><a href="#SEO搜索引擎优化" class="headerlink" title="- SEO搜索引擎优化"></a>- SEO搜索引擎优化</h4><p>概述：SEO：搜索引擎优化（Search Engine Optimization）, 通过各种技术（手段）来确保，我们的Web内容被搜索引擎最大化收录，最大化提高权重，最终带来更多流量。</p>
-<p><img src="https://img-blog.csdnimg.cn/8e18a34912e5495b9493421b55a40396.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATV93eno=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>SEO解决方案：提前将<code>页面和数据</code>进行整合</p>
-<ul>
-<li>前端：采用SSR</li>
-<li>后端：页面静态化（freemarker 、thymeleaf、velocity）</li>
-</ul>
-<h4 id="SSR服务端渲染"><a href="#SSR服务端渲染" class="headerlink" title="- SSR服务端渲染"></a>- SSR服务端渲染</h4><p>概述：SSR：网页是通过服务端渲染生成后输出给客户端。</p>
-<ul>
-<li><p>在SSR中，前端分成2部分：前端客户端、前端服务端</p>
-</li>
-<li><p>前端服务端，用于发送ajax，获得数据</p>
-</li>
-<li><p>前端客户端，用于将ajax数据和页面进行渲染，渲染成html页面，并响应给调用程序（浏览器、爬虫）</p>
-<p><img src="https://img-blog.csdnimg.cn/2a19577a58714a6098e4ce1775c382ff.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBATV93eno=,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-</li>
-<li><p>如果爬虫获得html页面，就可以启动处理程序，处理页面内容，最终完成SEO操作。</p>
-</li>
-</ul>
-<h4 id="SPA和SSR对比"><a href="#SPA和SSR对比" class="headerlink" title="- SPA和SSR对比"></a>- SPA和SSR对比</h4><table>
-<thead>
-<tr>
-<th></th>
-<th>SPA单页应用程序</th>
-<th>SSR服务器端渲染</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>优势</td>
-<td>1.页面内容在客户端渲染<br/>2. 只关注View层，与后台耦合度低，前后端分离<br/>3.减轻后台渲染画面的压力</td>
-<td>1.更好的SEO，搜索引擎工具可以直接查看完全渲染的画面<br/>2.更快的内容到达时间 (time-to-content)，用户能更快的看到完整渲染的画面</td>
-</tr>
-<tr>
-<td>劣势</td>
-<td>1.首屏加载缓慢<br/>2.SEO(搜索引擎优化)不友好</td>
-<td>1.更多的服务器端负载<br/>2.涉及构建设置和部署的更多要求，需要用Node.js渲染<br/>3.开发条件有限制，一些生命周期将失效<br/>4.一些常用的浏览器API无法使用</td>
-</tr>
-</tbody></table>
-<h4 id="Nuxt-js"><a href="#Nuxt-js" class="headerlink" title="- Nuxt.js"></a>- Nuxt.js</h4><p>环境搭建参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/M_wzz/article/details/121914443">Nuxt详解+案例_M_wzz的博客-CSDN博客_nuxt</a></p>
-<ul>
-<li>Nuxt.js 是一个基于 Vue.js 的通用应用框</li>
-<li>Nuxt支持vue的所有功能，此类内容为<code>前端客户端</code>内容</li>
-<li>Nuxt特有的内容，都是<code>前端服务端</code>内容</li>
-<li>通过对客户端/服务端基础架构的抽象组织，Nuxt.js 主要关注的是应用的 <strong>UI 渲染</strong>。</li>
-<li>Nuxt.js 预设了利用 Vue.js 开发<strong>服务端渲染</strong>的应用所需要的各种配置。</li>
-</ul>
-<h5 id="幻灯片插件"><a href="#幻灯片插件" class="headerlink" title="- 幻灯片插件"></a>- 幻灯片插件</h5><ol>
-<li><p>安装插件<code>npm install vue-awesome-swiper</code></p>
-</li>
-<li><p>配置插件：在plugins文件夹下新建nuxt-swiper-plugins.js,内容是</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueAwesomeSwiper</span> <span class="keyword">from</span> <span class="string">&#x27;vue-awesome-swiper/dist/ssr&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueAwesomeSwiper</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>在nuxt.config.js文件中配置插件，将plugins和css节点复制到<code>module.exports</code>节点下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">	 <span class="attr">css</span>: [</span><br><span class="line">  <span class="string">&#x27;swiper/dist/css/swiper.css&#x27;</span></span><br><span class="line"> ],</span><br><span class="line"> <span class="attr">plugins</span>: [</span><br><span class="line">  &#123;<span class="attr">src</span>:<span class="string">&#x27;~/plugins/nuxt-swiper-plugin.js&#x27;</span>,<span class="attr">ssr</span>:<span class="literal">false</span>&#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>将静态资源复制到assets中</p>
-</li>
-</ol>
-<h5 id="固定路由"><a href="#固定路由" class="headerlink" title="- 固定路由"></a>- 固定路由</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--路径是固定地址，不发生变化--&gt;</span><br><span class="line">&lt;!--to属性设置路由跳转地址--&gt;</span><br><span class="line">&lt;router-link to=&quot;/course&quot; tag=&quot;li&quot; active-class=&quot;current&quot;&gt;</span><br><span class="line">    &lt;a&gt;课程&lt;/a&gt;</span><br><span class="line">&lt;/router-link&gt;</span><br><span class="line">&lt;!--做法：在pages里面创建文件夹course,在course文件夹创建index.vue--&gt;</span><br></pre></td></tr></table></figure>
+SEO解决方案：提前将页面和数据进行整合
 
-<h5 id="动态路由"><a href="#动态路由" class="headerlink" title="- 动态路由"></a>- 动态路由</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">每次生成路由地址不一样，比如课程详情页面，每个课程id不一样</span><br><span class="line">NUXT的动态路由是以下划线开头的vue文件，参数名为下划线后边的文件名</span><br></pre></td></tr></table></figure>
+前端：采用SSR
+后端：页面静态化（freemarker 、thymeleaf、velocity）
 
-<h5 id="集成axios"><a href="#集成axios" class="headerlink" title="- 集成axios"></a>- 集成axios</h5><ol>
-<li><p>下载<code>npm install axios</code></p>
-</li>
-<li><p>封装axios</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建axios实例</span></span><br><span class="line"><span class="keyword">const</span> service=axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>:<span class="string">&#x27;http://localhost:9001&#x27;</span>,<span class="comment">//api的baseurl</span></span><br><span class="line">    <span class="attr">timeout</span>:<span class="number">2000</span>   <span class="comment">//请求超时时间</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service</span><br></pre></td></tr></table></figure></li>
-</ol>
+- SSR服务端渲染概述：SSR：网页是通过服务端渲染生成后输出给客户端。
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/19/myfirst/" data-id="cl5rlne710001zgu503bm3tsp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+在SSR中，前端分成2部分：前端客户端、前端服务端
+
+前端服务端，用于发送ajax，获得数据
+
+前端客户端，用于将ajax数据和页面进行渲染，渲染成html页面，并响应给调用程序（浏览器、爬虫）
 
 
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/07/19/hello-world/" class="article-date">
-  <time datetime="2022-07-19T02:59:28.868Z" itemprop="datePublished">2022-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/19/hello-world/">Hello World</a>
-    </h1>
-  
+如果爬虫获得htm ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/19/hello-world/" title="Hello World"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/19/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-19T02:59:28.868Z" title="发表于 2022-07-19 10:59:28">2022-07-19</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+More info: Writing
+Run server1$ hexo server
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+More info: Server
+Generate static files1$ hexo generate
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+More info: Generating
+Deploy to remote sites1$ hexo deploy
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/19/hello-world/" data-id="cl5rlne6w0000zgu5gr6lcjwv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/07/19/myfirst/">myfirst</a>
-          </li>
-        
-          <li>
-            <a href="/2022/07/19/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jilfoyle</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/19/myfirst/" title="myfirst"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="myfirst"/></a><div class="content"><a class="title" href="/2022/07/19/myfirst/" title="myfirst">myfirst</a><time datetime="2022-07-19T03:08:06.000Z" title="发表于 2022-07-19 11:08:06">2022-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/19/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/07/19/hello-world/" title="Hello World">Hello World</a><time datetime="2022-07-19T02:59:28.868Z" title="发表于 2022-07-19 10:59:28">2022-07-19</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-07-19T13:34:23.184Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Jilfoyle</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
