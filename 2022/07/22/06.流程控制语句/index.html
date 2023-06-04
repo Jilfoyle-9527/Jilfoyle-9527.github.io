@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>06.流程控制语句 | Jilfoyle</title><meta name="keywords" content="后端,java"><meta name="author" content="Jilfoyle"><meta name="copyright" content="Jilfoyle"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="衣带渐宽终不悔。为伊消得人憔悴。 ——柳永《蝶恋花》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06.流程控制语句">
+<meta property="og:url" content="https://jilfoyle-9527.github.io/2022/07/22/06.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="Jilfoyle">
+<meta property="og:description" content="衣带渐宽终不悔。为伊消得人憔悴。 ——柳永《蝶恋花》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jilfoyle-9527.github.io/medias/java/cover.jpg">
+<meta property="article:published_time" content="2022-07-22T07:38:31.000Z">
+<meta property="article:modified_time" content="2023-04-12T03:37:08.988Z">
+<meta property="article:author" content="Jilfoyle">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jilfoyle-9527.github.io/medias/java/cover.jpg"><link rel="shortcut icon" href="/img/index.ico"><link rel="canonical" href="https://jilfoyle-9527.github.io/2022/07/22/06.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '06.流程控制语句',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-12 11:37:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">262</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/medias/java/cover.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Jilfoyle</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">06.流程控制语句</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-22T07:38:31.000Z" title="发表于 2022-07-22 15:38:31">2022-07-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-12T03:37:08.988Z" title="更新于 2023-04-12 11:37:08">2023-04-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%BC%80%E5%8F%91%E8%B7%AF%E7%BA%BF/">Java开发路线</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%BC%80%E5%8F%91%E8%B7%AF%E7%BA%BF/3-JavaSE/">3.JavaSE</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%BC%80%E5%8F%91%E8%B7%AF%E7%BA%BF/3-JavaSE/1-Java%E5%9F%BA%E7%A1%80/">1.Java基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="06.流程控制语句"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>衣带渐宽终不悔。为伊消得人憔悴。</p>
+<p align="right">——柳永《蝶恋花》</p>
+<span id="more"></span>
+[TOC]
+
+<h1 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h1><h3 id="1-顺序结构"><a href="#1-顺序结构" class="headerlink" title="1. 顺序结构"></a>1. 顺序结构</h3><blockquote>
+<p>顺序结构(Sequence structure)的程序设计是最简单的，只要按照解决问题的顺序写出相应的语句就行，它的执行顺序是<strong>自上而下，依次执行。</strong></p>
+</blockquote>
+<h3 id="2-分支-选择-结构"><a href="#2-分支-选择-结构" class="headerlink" title="2. 分支(选择)结构"></a>2. 分支(选择)结构</h3><h4 id="2-1-If"><a href="#2-1-If" class="headerlink" title="2.1 If"></a>2.1 <strong>If</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> miao=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(miao)&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;哎呦~喵喵喵..&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我们一起学猫叫&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//采用取反的方式</span></span><br><span class="line"><span class="keyword">if</span>(!miao)&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我们一起学猫叫&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;哎呦~喵喵喵..&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-If…Else"><a href="#2-2-If…Else" class="headerlink" title="2.2 If…Else"></a>2.2 <strong>If…Else</strong></h4><blockquote>
+<p>if和else条件是互斥的，意思是：两者的条件只能有一个成立（不能同时成立）;</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    </span><br><span class="line">		<span class="type">int</span> age=<span class="number">17</span>;</span><br><span class="line">    </span><br><span class="line">		<span class="keyword">if</span>(age&gt;=<span class="number">18</span>)&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;喵喵可以交楠盆友了！&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;喵喵今年十七还是个孩纸。&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    </span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(age%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">			System.out.println(age+<span class="string">&quot;nianling是偶数&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(age+<span class="string">&quot;nianling是奇数&quot;</span>);</span><br><span class="line">                   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-If…Else-if"><a href="#2-3-If…Else-if" class="headerlink" title="2.3 If…Else if"></a>2.3 <strong>If…Else if</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">&#123;</span><br><span class="line">       </span><br><span class="line">	System.out.println(<span class="string">&quot;学生成绩等级&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="type">double</span> scores=<span class="number">79.5</span>;</span><br><span class="line">	<span class="keyword">if</span>(scores&gt;=<span class="number">90</span>)&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;A等级&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(scores&gt;=<span class="number">80</span>)&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;B等级&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(scores&gt;=<span class="number">70</span>)&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;C等级&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(scores&gt;=<span class="number">60</span>)&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;D等级&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;F等级&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">       </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-switch"><a href="#2-4-switch" class="headerlink" title="2.4 switch"></a>2.4 <strong>switch</strong></h4><blockquote>
+<p>switch中的数据类型:</p>
+<ul>
+<li>基本数据类型：byte/short/int/char</li>
+<li>引用数据类型：String(JDK1.7才引进的String类型)/enum</li>
+</ul>
+<p>switch语句非常灵活</p>
+<ul>
+<li><strong>case</strong>语句的顺序可以颠倒，<strong>break</strong>语句记得加上。</li>
+</ul>
+<p><strong>匹配到哪一个case,就从哪一个case开始执行，直到遇到break语句才会结束。</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> num=<span class="number">1</span>;</span><br><span class="line">       </span><br><span class="line">	<span class="keyword">switch</span>(num)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期一&quot;</span>);</span><br><span class="line">		<span class="comment">// 如果case中没有break;语句的话，那么穿透，从匹配到的位置往下全部执行。</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">               </span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期二&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期三&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期四&quot;</span>);</span><br><span class="line">		    <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期五&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期六&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;	</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">			System.out.println(<span class="string">&quot;星期日&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;<span class="comment">//最后一个break语句可以省略，但是推荐加上去。</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">&quot;喵喵喵~&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-循环结构"><a href="#3-循环结构" class="headerlink" title="3. 循环结构"></a>3. 循环结构</h3><h4 id="3-1-For"><a href="#3-1-For" class="headerlink" title="3.1 For"></a>3.1 <strong>For</strong></h4><blockquote>
+<p>循环结构：将重复的工作放在一起去做。<br>循环结构：四部分（以及执行顺序）</p>
+<ol>
+<li>初始化语句：  循环开始的时候执行，只执行一次。</li>
+<li>条件判断：      如果成立，循环继续，如果不成立，循环退出。</li>
+<li>循环体：          重复的工作。</li>
+<li>步进：              每次循环之后，都要去进行的工作。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打印522行，“哎呦~喵喵喵...”</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">522</span> ;i++ )</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;哎呦~喵喵喵...&quot;</span>+(i+<span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-while-和-do…while"><a href="#3-2-while-和-do…while" class="headerlink" title="3.2 while 和 do…while"></a>3.2 while 和 do…while</h4><blockquote>
+<p>实现：1+2+3+4+…+100;</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">			初始条件</span></span><br><span class="line"><span class="comment">			while(判断条件)&#123;</span></span><br><span class="line"><span class="comment">				循环体；</span></span><br><span class="line"><span class="comment">				步长；(也可以写到循环体前面)</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">			使用while实现</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">		<span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">100</span>)&#123;</span><br><span class="line">			sum+=(i+<span class="number">1</span>);</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(sum);<span class="comment">//10100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">			1.初始化条件</span></span><br><span class="line"><span class="comment">			2.执行循环体</span></span><br><span class="line"><span class="comment">			3.歩长</span></span><br><span class="line"><span class="comment">			4.判断</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			2，3步顺序可调整</span></span><br><span class="line"><span class="comment">			使用do...while实现</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">		<span class="type">int</span> j=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			sum+=(j+<span class="number">1</span>);</span><br><span class="line">			j++;</span><br><span class="line">		&#125;<span class="keyword">while</span>(j&lt;<span class="number">100</span>);</span><br><span class="line">		System.out.println(sum);<span class="comment">//15150</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>知道循环次数的时候使用for<br>不知道循环的具体次数的时候使用while</p>
+</blockquote>
+<h4 id="3-3-break-和-continue"><a href="#3-3-break-和-continue" class="headerlink" title="3.3 break 和 continue"></a>3.3 break 和 continue</h4><blockquote>
+<p><strong>break语句</strong>：打断循环，一旦执行了break语句，当前循环就结束了。</p>
+<p>利用break;可以控制在循环次数内结束循环。</p>
+<p><strong>continue</strong> : 另外控制循环语句的关键字continue一旦执行了，当次就结束了，立马进入到下一次的循环。</p>
+</blockquote>
+<h4 id="3-4-循环结构练习"><a href="#3-4-循环结构练习" class="headerlink" title="3.4 循环结构练习"></a>3.4 循环结构练习</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**For循环结构</span></span><br><span class="line"><span class="comment">	一个小时所有的分钟数进行遍历（内层循环）</span></span><br><span class="line"><span class="comment">   在遍历一天中所有的小时（外层循环）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//一天的24个小时</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">23</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//一个小时的60分钟</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">60</span> ;j++ )</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(i+<span class="string">&quot;时&quot;</span>+j+<span class="string">&quot;分钟&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	一个球从100m高度自由落下,每次落地后反跳回原来高度的一般,再落下.求第10次落地时,共经过多少米?第10次反弹的高度。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//定义初始高度</span></span><br><span class="line">		<span class="type">double</span> height=<span class="number">100</span>;</span><br><span class="line">		<span class="comment">//定义路程</span></span><br><span class="line">		<span class="type">double</span> s=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//总路程+100</span></span><br><span class="line">			s +=(height*<span class="number">2</span>);</span><br><span class="line">			<span class="comment">//每次弹起的高度</span></span><br><span class="line">			height /=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s -=<span class="number">100</span>;<span class="comment">//减去100，得到实际路程</span></span><br><span class="line"></span><br><span class="line">		System.out.println(s);</span><br><span class="line">		System.out.println(height);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用循环结构打印出下图效果			</span></span><br><span class="line">			 A		</span><br><span class="line">		   *B*      </span><br><span class="line">		  **C**		</span><br><span class="line">		 ***D***	</span><br><span class="line">		****E****	</span><br><span class="line">	   *****F*****  </span><br><span class="line">		****G****	</span><br><span class="line">		 ***H***	</span><br><span class="line">		  **I**		</span><br><span class="line">		   *J*		</span><br><span class="line">			 K		</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> m=<span class="number">11</span>;<span class="comment">//定义总行数</span></span><br><span class="line">		<span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">		ch -= <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m ;i++ )&#123;</span><br><span class="line">			<span class="type">int</span> num1=<span class="number">2</span>*i-<span class="number">1</span>;<span class="comment">//num1 代表的是每一行有多少个*</span></span><br><span class="line">			<span class="type">int</span> num2=m/<span class="number">2</span>+<span class="number">1</span>-i;<span class="comment">//num2 每一行有多少个空格  n=m/2+1</span></span><br><span class="line">			<span class="type">int</span> zm=i;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span>(i&gt;m/<span class="number">2</span>)&#123;</span><br><span class="line">				num1=<span class="number">2</span>*(m+<span class="number">1</span>-i)-<span class="number">1</span>;</span><br><span class="line">				num2=i-(m/<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">				zm=m+<span class="number">1</span>-i;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">1</span>;k&lt;=num2 ;k++ )&#123;</span><br><span class="line">				System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=num1 ;j++ )&#123;</span><br><span class="line">				<span class="keyword">if</span>(j==zm)&#123;</span><br><span class="line">					System.out.print(ch +=<span class="number">1</span>);<span class="comment">//结果是char类型</span></span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">&quot; &quot;</span>);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jilfoyle-9527.github.io">Jilfoyle</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jilfoyle-9527.github.io/2022/07/22/06.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">https://jilfoyle-9527.github.io/2022/07/22/06.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jilfoyle-9527.github.io" target="_blank">Jilfoyle</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/java/">java</a></div><div class="post_share"><div class="social-share" data-image="/medias/java/cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/22/06.%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src="/medias/datastruct/datastruct.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">06.排序算法基础</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/22/06.%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E7%9B%91%E5%90%AC%E5%99%A8/"><img class="next-cover" src="/medias/javaweb/web.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">06.过滤器和监听器</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jilfoyle</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">262</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暑往寒来春复秋，夕阳西下水东流</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">流程控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 顺序结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%86%E6%94%AF-%E9%80%89%E6%8B%A9-%E7%BB%93%E6%9E%84"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 分支(选择)结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-If"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">2.1 If</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-If%E2%80%A6Else"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">2.2 If…Else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-If%E2%80%A6Else-if"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">2.3 If…Else if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-switch"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">2.4 switch</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-For"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">3.1 For</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-while-%E5%92%8C-do%E2%80%A6while"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">3.2 while 和 do…while</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-break-%E5%92%8C-continue"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">3.3 break 和 continue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BB%83%E4%B9%A0"><span class="toc-number">1.0.3.4.</span> <span class="toc-text">3.4 循环结构练习</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/book/" title="书架"><img src="/medias/book/book.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="书架"/></a><div class="content"><a class="title" href="/2023/04/15/book/" title="书架">书架</a><time datetime="2023-04-15T13:03:19.424Z" title="发表于 2023-04-15 21:03:19">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/Springboot(%E5%90%88%E9%9B%86)/" title="SpringBoot(合集)"><img src="/medias/springboot/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot(合集)"/></a><div class="content"><a class="title" href="/2023/04/12/Springboot(%E5%90%88%E9%9B%86)/" title="SpringBoot(合集)">SpringBoot(合集)</a><time datetime="2023-04-12T07:53:42.161Z" title="发表于 2023-04-12 15:53:42">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/Springboot-security(%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6)/" title="Springboot-security(权限控制)"><img src="/medias/springboot/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-security(权限控制)"/></a><div class="content"><a class="title" href="/2023/04/12/Springboot-security(%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6)/" title="Springboot-security(权限控制)">Springboot-security(权限控制)</a><time datetime="2023-04-12T07:51:10.801Z" title="发表于 2023-04-12 15:51:10">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/SpringDataElasticsearch/" title="SpringDataElasticsearch"><img src="/medias/SpringDataElasticsearch/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringDataElasticsearch"/></a><div class="content"><a class="title" href="/2023/04/12/SpringDataElasticsearch/" title="SpringDataElasticsearch">SpringDataElasticsearch</a><time datetime="2023-04-12T07:35:07.267Z" title="发表于 2023-04-12 15:35:07">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/9.SpringMVC%E4%B9%8BRESTful%E9%A3%8E%E6%A0%BC/" title="9.SpringMVC之RESTful风格"><img src="/medias/spring/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="9.SpringMVC之RESTful风格"/></a><div class="content"><a class="title" href="/2023/04/12/9.SpringMVC%E4%B9%8BRESTful%E9%A3%8E%E6%A0%BC/" title="9.SpringMVC之RESTful风格">9.SpringMVC之RESTful风格</a><time datetime="2023-04-12T07:24:27.000Z" title="发表于 2023-04-12 15:24:27">2023-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Jilfoyle</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

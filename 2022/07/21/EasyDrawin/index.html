@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>EasyDrawin | Jilfoyle</title><meta name="keywords" content="推拉流"><meta name="author" content="Jilfoyle"><meta name="copyright" content="Jilfoyle"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="EasyDarwinGo录像功能发布EasyDarwin服务器现在使用Go版本实现了。最新的代码提交，已经支持了推流（或者拉流）的同时进行本地存储。 本地存储的原理，是在推流的同时启动ffmpeg作为一路Client来做存储。ffmpeg在demux和mux的工作方面已经十分成熟，我们没必要再重复发明轮子。因此这种做法十分取巧而且简单有效，也不会侵入原来的代码架构。如下图所示：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EasyDrawin">
+<meta property="og:url" content="https://jilfoyle-9527.github.io/2022/07/21/EasyDrawin/index.html">
+<meta property="og:site_name" content="Jilfoyle">
+<meta property="og:description" content="EasyDarwinGo录像功能发布EasyDarwin服务器现在使用Go版本实现了。最新的代码提交，已经支持了推流（或者拉流）的同时进行本地存储。 本地存储的原理，是在推流的同时启动ffmpeg作为一路Client来做存储。ffmpeg在demux和mux的工作方面已经十分成熟，我们没必要再重复发明轮子。因此这种做法十分取巧而且简单有效，也不会侵入原来的代码架构。如下图所示：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jilfoyle-9527.github.io/medias/linux/easy.png">
+<meta property="article:published_time" content="2022-07-21T09:30:05.000Z">
+<meta property="article:modified_time" content="2023-04-11T14:43:59.691Z">
+<meta property="article:author" content="Jilfoyle">
+<meta property="article:tag" content="推拉流">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jilfoyle-9527.github.io/medias/linux/easy.png"><link rel="shortcut icon" href="/img/index.ico"><link rel="canonical" href="https://jilfoyle-9527.github.io/2022/07/21/EasyDrawin/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'EasyDrawin',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-11 22:43:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">262</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/medias/linux/easy.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Jilfoyle</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">EasyDrawin</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-21T09:30:05.000Z" title="发表于 2022-07-21 17:30:05">2022-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-11T14:43:59.691Z" title="更新于 2023-04-11 22:43:59">2023-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="EasyDrawin"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="EasyDarwinGo录像功能发布"><a href="#EasyDarwinGo录像功能发布" class="headerlink" title="EasyDarwinGo录像功能发布"></a>EasyDarwinGo录像功能发布</h3><p>EasyDarwin服务器现在使用Go版本实现了。最新的代码提交，已经支持了推流（或者拉流）的同时进行本地存储。</p>
+<p>本地存储的原理，是在推流的同时启动ffmpeg作为一路Client来做存储。ffmpeg在demux和mux的工作方面已经十分成熟，我们没必要再重复发明轮子。因此这种做法十分取巧而且简单有效，也不会侵入原来的代码架构。如下图所示：</p>
+<hr>
+<svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-G4OMGhizN4krqiyI" height="100%" width="100%" style="max-width:650px;" viewBox="-50 -10 650 231">
+  <g></g>
+  <g>
+   <line id="actor3" x1="75" y1="5" x2="75" y2="220" class="actor-line" stroke-width="0.5px" stroke="#999"></line>
+   <rect x="0" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="75" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="75" dy="0">
+     RTSP摄像机
+    </tspan>
+   </text>
+  </g>
+  <g>
+   <line id="actor4" x1="275" y1="5" x2="275" y2="220" class="actor-line" stroke-width="0.5px" stroke="#999"></line>
+   <rect x="200" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="275" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="275" dy="0">
+     EasyDarwin
+    </tspan>
+   </text>
+  </g>
+  <g>
+   <line id="actor5" x1="475" y1="5" x2="475" y2="220" class="actor-line" stroke-width="0.5px" stroke="#999"></line>
+   <rect x="400" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="475" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="475" dy="0">
+     本地存储
+    </tspan>
+   </text>
+  </g>
+  <defs>
+   <marker id="arrowhead" refX="5" refY="2" markerWidth="6" markerHeight="4" orient="auto">
+    <path d="M 0,0 V 4 L6,2 Z"></path>
+   </marker>
+  </defs>
+  <defs>
+   <marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="16" refY="4">
+    <path fill="black" stroke="#000000" stroke-width="1px" d="M 9,2 V 6 L16,4 Z" style="stroke-dasharray: 0, 0;"></path>
+    <path fill="none" stroke="#000000" stroke-width="1px" d="M 0,1 L 6,7 M 6,1 L 0,7" style="stroke-dasharray: 0, 0;"></path>
+   </marker>
+  </defs>
+  <g>
+   <text x="175" y="93" class="messageText" style="text-anchor: middle;">
+    推流
+   </text>
+   <line x1="75" y1="100" x2="275" y2="100" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line>
+  </g>
+  <g>
+   <text x="375" y="128" class="messageText" style="text-anchor: middle;">
+    使用ffmpeg进行拉流和存储
+   </text>
+   <line x1="275" y1="135" x2="475" y2="135" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3, 3; fill: none;"></line>
+  </g>
+  <g>
+   <rect x="0" y="155" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="75" y="187.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="75" dy="0">
+     RTSP摄像机
+    </tspan>
+   </text>
+  </g>
+  <g>
+   <rect x="200" y="155" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="275" y="187.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="275" dy="0">
+     EasyDarwin
+    </tspan>
+   </text>
+  </g>
+  <g>
+   <rect x="400" y="155" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect>
+   <text x="475" y="187.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;">
+    <tspan x="475" dy="0">
+     本地存储
+    </tspan>
+   </text>
+  </g>
+ </svg>
+
+
+<hr>
+<p>使用方法如下：</p>
+<h3 id="安装ffmpeg。"><a href="#安装ffmpeg。" class="headerlink" title="安装ffmpeg。"></a>安装ffmpeg。</h3><p>EasyDarwin使用Ffmpeg进行本地存储，所以首先需要安装ffmpeg才能继续。可在ffmpeg<a target="_blank" rel="noopener" href="https://ffmpeg.zeranoe.com/builds/">官方下载链接</a>选择适当的平台来下载。<br> <img src="https://img-blog.csdnimg.cn/2018111715312161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 下载完成后，得到一个zip压缩包，解压出来。我解压之后的目录为<code>Downloads/ffmpeg-20180719-9cb3d8f-macos64-shared/</code></p>
+<h3 id="配置存储"><a href="#配置存储" class="headerlink" title="配置存储"></a>配置存储</h3><p>EasyDarwin的配置文件，默认为与可执行文件同目录的<strong>EasyDarwin.ini</strong>文件。EasyDarwin也支持使用用户指定的配置文件，这样很方便在调试环境和生产环境来切换。自定义配置文件如何配置，参考我的另一篇文章的说明。</p>
+<p>我们使用文本编辑器打开EasyDarwin.ini，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[http]</span><br><span class="line">port=10008</span><br><span class="line">default_username=admin</span><br><span class="line">default_password=admin</span><br><span class="line"></span><br><span class="line">[rtsp]</span><br><span class="line">port=554</span><br><span class="line"></span><br><span class="line">; rtsp 超时时间，包括RTSP建立连接与数据收发。</span><br><span class="line">timeout=28800</span><br><span class="line"></span><br><span class="line">; 是否使能gop cache。如果使能，服务器会缓存最后一个I帧以及其后的非I帧，以提高播放速度。但是可能在高并发的情况下带来内存压力。</span><br><span class="line">gop_cache_enable=1</span><br><span class="line"></span><br><span class="line">; 是否使能推送的同事进行本地存储，使能后则可以进行录像查询与回放。</span><br><span class="line">save_stream_to_local=1</span><br><span class="line"></span><br><span class="line">;easydarwin使用ffmpeg工具来进行存储。这里表示ffmpeg的可执行程序的路径</span><br><span class="line">ffmpeg_path=/Users/ze/Downloads/ffmpeg-20180719-9cb3d8f-macos64-shared/bin/ffmpeg</span><br><span class="line"></span><br><span class="line">;本地存储所将要保存的根目录。如果不存在，程序会尝试创建该目录。</span><br><span class="line">m3u8_dir_path=/Users/ze/Downloads/EasyDarwinGoM3u8</span><br><span class="line"></span><br><span class="line">;切片文件时长。本地存储时，将以该时间段为标准来生成ts文件(该时间+一个I帧间隔)，单位秒</span><br><span class="line">ts_duration_second=6</span><br><span class="line"></span><br><span class="line">;ffmpeg转码格式，比如可设置为-c:v copy -c:a copy，表示copy源格式；default表示使用ffmpeg内置的输出格式，可能需要转码</span><br><span class="line">/265=default</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其中，rtsp小结里面，有如下几项是事关存储的，我们要做些修改：</p>
+<ol>
+<li>save_stream_to_local表示是否开启本地存储。1表示开启，0表示不开启。我们改成1即可</li>
+<li>ffmpeg_path表示ffmpeg的可执行文件的路径。即上一步从ffmpeg下载安装后的路径，如我的mac上的路径为<code>/Users/apple/Downloads/ffmpeg-20180719-9cb3d8f-macos64-shared/bin/ffmpeg</code></li>
+<li>m3u8_dir_path表示录像文件的存储目录。设置为一个存在的可读可写目录即可。比如我设置为<code>/Users/apple/Downloads/EasyDarwinGoM3u8</code></li>
+<li>启动EasyDarwin服务，可看到有这样一句<code>[EasyDarwin] 2018/11/17 12:45:35 rtsp-server.go:67: Prepare to save stream to local....</code>输出日志，表示配置本地存储成功。</li>
+</ol>
+<h3 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h3><p>EasyDarwinGo支持<code>直接推流</code>和<code>拉流分发</code>，这两种方式都可以用来验证存储功能。</p>
+<h3 id="直接推流"><a href="#直接推流" class="headerlink" title="直接推流"></a>直接推流</h3><p>对于直接推流方式，我们可以安装一个手机端的<strong>EasyPusher</strong>来方便地测试推送(EasyPusher是手机端的一个RTSP推流器，详见：<a target="_blank" rel="noopener" href="https://github.com/EasyDarwin/EasyPusher">https://github.com/EasyDarwin/EasyPusher</a>)。</p>
+<ol>
+<li>我们<strong>设置EasyPusher端的推流地址为EasyDarwin的服务器地址</strong>，服务器地址一般为<code>RTSP://SERVER_IP</code> 这里使用了RTSP协议的默认端口554。如果不是很清楚服务器IP，可以在服务器的打印日志里面看到，如下：<br><code>rtsp server start --&gt; rtsp://192.168.0.108</code><br> EasyPusher的推流地址设置为：<br> <img src="https://img-blog.csdnimg.cn/20181117150604123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>确保手机端和服务器端在同一个网络下，我们启动手机端EasyPusher的推送。推送成功后，服务器端会自动启动存储。</li>
+</ol>
+<h3 id="拉流分发"><a href="#拉流分发" class="headerlink" title="拉流分发"></a>拉流分发</h3><p>EasyDarwin可将第三方RTSP视频源拉到服务端并转发出去。这个过程我们成为<code>拉流分发</code>,可以通过下面的方法建立一个拉流：</p>
+<ol>
+<li>在打开EasyDarwin管理后台,管理后台的URL默认为<code>http://[服务器地址]:10008</code>,其中端口可在配置文件里面HTTP小节里做修改。<br>后台管理界面如下：<br> <img src="https://img-blog.csdnimg.cn/20190106173357490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>点击“拉流分发”按钮，添加一个拉流，界面如下：<br><img src="https://img-blog.csdnimg.cn/20190106173810387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 这里有四个参数可设置</li>
+</ol>
+<ul>
+<li>RTSP地址，即拉流地址，就是要拉流的第三方的RTSP视频源地址</li>
+<li>自定义路径，这个是为了给拉流地址创建个在本服务器对应的地址。如果不填，那默认地址为<code>RTSP://[服务器地址]/[第三方RTSP源的PATH]</code>，比如如果拉流地址为<code>RTSP://user:password@xx.xx.xx.xx:port/1/2/3.sdp</code>,那本地服务器的对应地址就应该为<code>RTSP://[服务器地址]/1/2/3.sdp</code>.<br>可想而知，如果本地服务器已经有了一个<code>RTSP://[服务器地址]/1/2/3.sdp</code>这样的流，就有冲突了。这个自定义路径就是为了解决这个冲突的。自定义路径设置了后，本地地址则变成了<code>RTSP://[服务器地址]/自定义路径</code></li>
+<li>空闲超时，拉流的超时时间，当拉流时，从视频源接收数据，当超过空闲超时时间却没有受到任何数据时，视为RTSP超时，会断开拉流。如果不填，则使用配置文件里面<code>RTSP</code>小节的<code>timeout</code>字段</li>
+<li>心跳间隔，EasyDarwin拉流时，会定期给视频源发送心跳包用来保活。这里的心跳包就是指<code>OPTIONS</code>命令<br>我们按照下图的输入内容创建一个拉流<br> <img src="https://img-blog.csdnimg.cn/20190106180312399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 可以在列表看到新增加了一条记录：<br> <img src="https://img-blog.csdnimg.cn/20190106182650240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 这里的上行流量就是从视频源拉流的流量总数；注意看这里有个在线人数为1，这里表示观看的用户数为一。这个观看用户数实际上就是ffmpeg在做存储。</li>
+</ul>
+<ol start="3">
+<li>等过段时间后，我们打开存储目录，可看到上面两个测试验证生成的文件目录，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20190106183018211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p5dDA1NTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 可以看到生成了一些ts文件和一个m3u8文件。m3u8可在浏览器的video标签进行播放。</li>
+</ol>
+<h3 id="回放和直播"><a href="#回放和直播" class="headerlink" title="回放和直播"></a>回放和直播</h3><p>可通过接口获取到录像生成的文件地址，接口如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 查询录像文件夹</span><br><span class="line">GET /api/v1/record/folders</span><br><span class="line">// 响应：</span><br><span class="line">&#123;</span><br><span class="line">	&quot;total&quot;: 2,</span><br><span class="line">	&quot;rows&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">		&quot;folder&quot;: &quot;439622.sdp&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">		&quot;folder&quot;: &quot;stream_265&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 查询录像文件夹下面的文件</span><br><span class="line">GET /api/v1/record/files?folder=stream_265</span><br><span class="line">// 响应：</span><br><span class="line">&#123;</span><br><span class="line">	&quot;total&quot;: 18,</span><br><span class="line">	&quot;rows&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;duration&quot;: &quot;&quot;,</span><br><span class="line">			&quot;durationMillis&quot;: 0,</span><br><span class="line">			&quot;path&quot;: &quot;/stream_265/20190106/out.m3u8&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;duration&quot;: &quot;00:00:10.00&quot;,</span><br><span class="line">			&quot;durationMillis&quot;: 10000,</span><br><span class="line">			&quot;path&quot;: &quot;/stream_265/20190106/out0.ts&quot;</span><br><span class="line">		&#125;</span><br><span class="line">		...</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查询到的结果通过拼接合成全路径如下，这个路径便可进行回放。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://[服务器地址]:10008/record/stream_265/20190106/out0.ts</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果需要直播，那使用m3u8文件路径，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[服务器地址]:10008/record/stream_265/20190106/out.m3u8</span><br></pre></td></tr></table></figure>
+
+<h3 id="存储文件的播放兼容性处理以及自定义配置"><a href="#存储文件的播放兼容性处理以及自定义配置" class="headerlink" title="存储文件的播放兼容性处理以及自定义配置"></a>存储文件的播放兼容性处理以及自定义配置</h3><p>有些流保存成m3u8后，无法在浏览器直接播放，比如H265的流。这时候就需要转码了。ffmpeg提供的转码功能可解决这个问题。<br> EasyDarwin在存储时，相当于调用ffmpeg指令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -fflags genpts -rtsp_transport tcp -i rtsp://localhost:554/stream_265 -c:v copy -c:a copy -hls_time 6 -hls_list_size 0 /Users/ze/Downloads/EasyDarwinGoM3u8/stream_265/20190106/out.m3u8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意这里的<code>-c:v</code>和<code>-c:a</code>参数使用了<code>copy</code>，相当于没有转码。当需要转码时，我们把这两个字段去掉就可以了。<br> 方法是在配置文件里面的<code>rtsp</code>小节，加上一个配置项，key为拉流的自定义路径，值为<code>default</code>,如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">;ffmpeg转码格式，比如可设置为-c:v copy -c:a copy，表示copy源格式；default表示使用ffmpeg内置的输出格式，可能需要转码</span><br><span class="line">/stream_265=default</span><br></pre></td></tr></table></figure>
+
+<p>这时，再进行存储，ffmpeg的指令变为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -fflags genpts -rtsp_transport tcp -i rtsp://localhost:554/stream_265 -hls_time 6 -hls_list_size 0 /Users/ze/Downloads/EasyDarwinGoM3u8/stream_265/20190106/out.m3u8</span><br></pre></td></tr></table></figure>
+
+<p>去掉了-c:v copy -c:a copy字段，ffmpeg存储时就开始转码了。这样会提高了存储文件的兼容性，但是同时会提高cpu的占用率。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/EasyDarwin/EasyDarwin">https://github.com/EasyDarwin/EasyDarwin</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jilfoyle-9527.github.io">Jilfoyle</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://jilfoyle-9527.github.io/2022/07/21/EasyDrawin/">https://jilfoyle-9527.github.io/2022/07/21/EasyDrawin/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jilfoyle-9527.github.io" target="_blank">Jilfoyle</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8E%A8%E6%8B%89%E6%B5%81/">推拉流</a></div><div class="post_share"><div class="social-share" data-image="/medias/linux/easy.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/21/CentOS%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEJavaWeb%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"><img class="prev-cover" src="/medias/linux/centos.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CentOS服务器配置JavaWeb开发环境</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/21/Springboot%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%B7%A5%E5%85%B7%E7%B1%BB/"><img class="next-cover" src="/medias/linux/springboot.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Springboot常用内置工具类</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img2.baidu.com/it/u=343850545,2320437498&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=500" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jilfoyle</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">262</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">37</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">暑往寒来春复秋，夕阳西下水东流</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#EasyDarwinGo%E5%BD%95%E5%83%8F%E5%8A%9F%E8%83%BD%E5%8F%91%E5%B8%83"><span class="toc-number">1.</span> <span class="toc-text">EasyDarwinGo录像功能发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ffmpeg%E3%80%82"><span class="toc-number">2.</span> <span class="toc-text">安装ffmpeg。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AD%98%E5%82%A8"><span class="toc-number">3.</span> <span class="toc-text">配置存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">测试验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8E%A8%E6%B5%81"><span class="toc-number">5.</span> <span class="toc-text">直接推流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%89%E6%B5%81%E5%88%86%E5%8F%91"><span class="toc-number">6.</span> <span class="toc-text">拉流分发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%94%BE%E5%92%8C%E7%9B%B4%E6%92%AD"><span class="toc-number">7.</span> <span class="toc-text">回放和直播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E6%92%AD%E6%94%BE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">存储文件的播放兼容性处理以及自定义配置</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/book/" title="书架"><img src="/medias/book/book.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="书架"/></a><div class="content"><a class="title" href="/2023/04/15/book/" title="书架">书架</a><time datetime="2023-04-15T13:03:19.424Z" title="发表于 2023-04-15 21:03:19">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/Springboot(%E5%90%88%E9%9B%86)/" title="SpringBoot(合集)"><img src="/medias/springboot/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot(合集)"/></a><div class="content"><a class="title" href="/2023/04/12/Springboot(%E5%90%88%E9%9B%86)/" title="SpringBoot(合集)">SpringBoot(合集)</a><time datetime="2023-04-12T07:53:42.161Z" title="发表于 2023-04-12 15:53:42">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/Springboot-security(%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6)/" title="Springboot-security(权限控制)"><img src="/medias/springboot/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Springboot-security(权限控制)"/></a><div class="content"><a class="title" href="/2023/04/12/Springboot-security(%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6)/" title="Springboot-security(权限控制)">Springboot-security(权限控制)</a><time datetime="2023-04-12T07:51:10.801Z" title="发表于 2023-04-12 15:51:10">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/SpringDataElasticsearch/" title="SpringDataElasticsearch"><img src="/medias/SpringDataElasticsearch/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringDataElasticsearch"/></a><div class="content"><a class="title" href="/2023/04/12/SpringDataElasticsearch/" title="SpringDataElasticsearch">SpringDataElasticsearch</a><time datetime="2023-04-12T07:35:07.267Z" title="发表于 2023-04-12 15:35:07">2023-04-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/9.SpringMVC%E4%B9%8BRESTful%E9%A3%8E%E6%A0%BC/" title="9.SpringMVC之RESTful风格"><img src="/medias/spring/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="9.SpringMVC之RESTful风格"/></a><div class="content"><a class="title" href="/2023/04/12/9.SpringMVC%E4%B9%8BRESTful%E9%A3%8E%E6%A0%BC/" title="9.SpringMVC之RESTful风格">9.SpringMVC之RESTful风格</a><time datetime="2023-04-12T07:24:27.000Z" title="发表于 2023-04-12 15:24:27">2023-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By Jilfoyle</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
